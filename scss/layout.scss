@@ -8,6 +8,7 @@ body {
     font-family: "Raleway", "Noto Sans KR", sans-serif;
     background: repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1) 1px, 0, transparent 5%) #333;
     color: #111;
+    overflow-y: hidden !important;
 }
 a {
     color: inherit;
@@ -43,12 +44,29 @@ img {
         ul {
             display: flex;
             justify-content: center;
+            li.selected a::after {
+                opacity: 1;
+            }
             a {
                 height: 50px;
                 display: flex;
                 align-items: center;
                 font-weight: 500;
                 padding: 0 40px;
+                position: relative;
+                &::after {
+                    content: "";
+                    display: block;
+                    width: 6px;
+                    height: 6px;
+                    background-color: $main-color;
+                    border-radius: 100%;
+                    position: absolute;
+                    bottom: 5px;
+                    left: calc(50% - 3px);
+                    opacity: 0;
+                    transition: 0.25s;
+                }
             }
         }
     }
